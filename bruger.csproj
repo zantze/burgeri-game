@@ -82,6 +82,8 @@
     <Compile Include="Assets\BurgerIngredient.cs" />
     <Compile Include="Assets\BurgerPlate.cs" />
     <Compile Include="Assets\BurgerPlateScanner.cs" />
+    <Compile Include="Assets\DiscoLight.cs" />
+    <Compile Include="Assets\DiscoMusicTrgiiger.cs" />
     <Compile Include="Assets\Dragger.cs" />
     <Compile Include="Assets\Dropper.cs" />
     <Compile Include="Assets\Hand.cs" />
