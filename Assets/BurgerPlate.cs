@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BurgerPlate : MonoBehaviour {
 
+  public Material spriteMaterial;
+
   bool createOnce = true;
   bool finishBurger = false;
 
@@ -26,7 +28,7 @@ public class BurgerPlate : MonoBehaviour {
 
     if (other == takeout && createOnce && GetComponent<Rigidbody2D>().velocity.magnitude < 0.5f) {
 
-      GameObject completeBurger = new GameObject("hello");
+      GameObject completeBurger = new GameObject("CreatedBurger");
 
       foreach (Collider2D collider in scanner.ingredients) {
         collider.transform.SetParent(completeBurger.transform);
@@ -35,7 +37,12 @@ public class BurgerPlate : MonoBehaviour {
       }
 
       completeBurger.AddComponent<Rigidbody2D>();
+      completeBurger.transform.localScale = new Vector3(0.19f, 0.19f, 0.19f);
+
       DontDestroyOnLoad(completeBurger);
+      foreach (Transform child in completeBurger.transform) {
+        child.GetComponent<SpriteRenderer>().material = spriteMaterial;
+      }
 
       Application.LoadLevel("SideScroller");
 

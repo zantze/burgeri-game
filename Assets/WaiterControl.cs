@@ -47,7 +47,7 @@ public class WaiterControl : MonoBehaviour {
 
     if (moving) {
       ToggleLegs(true, flip);
-      movementing += magnitude;
+      movementing += (magnitude / 5) + 1.5f;
     }
 
     else {

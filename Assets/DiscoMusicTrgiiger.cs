@@ -12,7 +12,8 @@ public class DiscoMusicTrgiiger : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
     lowp = music.GetComponent<AudioLowPassFilter>();
-	}
+    music.volume = 0.15f;
+  }
 	
 	// Update is called once per frame
 	void Update () {
@@ -22,12 +23,14 @@ public class DiscoMusicTrgiiger : MonoBehaviour {
   void OnTriggerEnter2D(Collider2D other) {
     if (other == player) {
       lowp.cutoffFrequency = 22000;
+      music.volume = 0.28f;
     }
   }
 
   void OnTriggerExit2D(Collider2D other) {
     if (other == player) {
       lowp.cutoffFrequency = 447;
+      music.volume = 0.15f;
     }
   }
 }
