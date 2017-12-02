@@ -35,6 +35,9 @@ public class BurgerPlate : MonoBehaviour {
       }
 
       completeBurger.AddComponent<Rigidbody2D>();
+      DontDestroyOnLoad(completeBurger);
+
+      Application.LoadLevel("SideScroller");
 
       createOnce = false;
     }

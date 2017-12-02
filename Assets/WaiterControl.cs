@@ -8,9 +8,13 @@ public class WaiterControl : MonoBehaviour {
   public float speed;
   bool moving;
 
+  public float movementing = 0; 
+
   public GameObject movingLegs;
   public GameObject stationaryLegs;
   public GameObject body;
+
+  public AudioClip[] footsteps; 
 
   // Use this for initialization
   private void Awake() {
@@ -23,6 +27,8 @@ public class WaiterControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+    float magnitude = GetComponent<Rigidbody2D>().velocity.magnitude;
 
     moving = false;
     bool flip = false;
@@ -41,6 +47,7 @@ public class WaiterControl : MonoBehaviour {
 
     if (moving) {
       ToggleLegs(true, flip);
+      movementing += magnitude;
     }
 
     else {
@@ -49,6 +56,21 @@ public class WaiterControl : MonoBehaviour {
 
     body.GetComponent<SpriteRenderer>().flipX = flip;
 
+
+    if (movementing > 50) {
+      GameObject sound = new GameObject();
+      AudioSource aSource = sound.AddComponent<AudioSource>();
+      aSource.volume = 0.5f;
+
+      int random = Random.Range(0, footsteps.Length - 1);
+
+      
+      aSource.clip = footsteps[random];
+      aSource.Play();
+
+      Destroy(sound, aSource.clip.length);
+      movementing = 0;
+    }
   }
 
   void ToggleLegs(bool check, bool direction) {
