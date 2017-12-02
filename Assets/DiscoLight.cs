@@ -25,11 +25,19 @@ public class DiscoLight : MonoBehaviour {
 	void Update () {
     timer += Time.deltaTime;
 
-    if (timer >= 0.5) {
-      int rnd = Random.Range(0, colors.Count - 1);
-      lite.color = colors[rnd];
-      timer = 0;
+    if (timer >= 0.5291666666) {
+      Color currentColor = lite.color;
+      Color newColor = lite.color;
 
+      while (newColor == currentColor) {
+
+
+        int rnd = Random.Range(0, colors.Count - 1);
+        newColor = colors[rnd];
+        lite.color = newColor;
+        timer = 0;
+
+      }
     }
 	}
 }
