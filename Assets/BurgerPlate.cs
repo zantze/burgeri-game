@@ -24,7 +24,7 @@ public class BurgerPlate : MonoBehaviour {
   void OnTriggerStay2D(Collider2D other) {
 
 
-    if (other == takeout && createOnce && GetComponent<Rigidbody2D>().velocity.magnitude < 1f) {
+    if (other == takeout && createOnce && GetComponent<Rigidbody2D>().velocity.magnitude < 0.5f) {
 
       GameObject completeBurger = new GameObject("hello");
 
