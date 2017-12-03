@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dropper : MonoBehaviour {
 
   public GameObject[] ingredients;
+  public RawImage uiSelector; 
 
 
   public int index = 0;
@@ -24,16 +26,22 @@ public class Dropper : MonoBehaviour {
       Instantiate(ingredients[index], v3, Quaternion.identity);
     }
 
-    if (Input.GetKeyDown(KeyCode.A)) {
+    if (Input.GetKeyDown(KeyCode.A) && index > 0) {
       index -= 1;
       Debug.Log(ingredients[index]);
+      ChangeIcon();
     }
 
-    if (Input.GetKeyDown(KeyCode.D)) {
+    if (Input.GetKeyDown(KeyCode.D) && index < ingredients.Length - 1) {
       index += 1;
       Debug.Log(ingredients[index]);
+      ChangeIcon();
     }
 
 
+  }
+
+  void ChangeIcon() {
+    uiSelector.texture = ingredients[index].GetComponent<BurgerIngredient>().GetIngredient().icon;
   }
 }
