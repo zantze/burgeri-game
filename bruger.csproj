@@ -87,17 +87,21 @@
     <Compile Include="Assets\DiscoMusicTrgiiger.cs" />
     <Compile Include="Assets\Dragger.cs" />
     <Compile Include="Assets\Dropper.cs" />
+    <Compile Include="Assets\EscButton.cs" />
     <Compile Include="Assets\Hand.cs" />
     <Compile Include="Assets\Helpers.cs" />
     <Compile Include="Assets\IgnoreCollisions.cs" />
     <Compile Include="Assets\Ingredient.cs" />
+    <Compile Include="Assets\MenuStuff.cs" />
     <Compile Include="Assets\Rank.cs" />
     <Compile Include="Assets\RecipeHolder.cs" />
+    <Compile Include="Assets\RecipeText.cs" />
     <Compile Include="Assets\ReviewTrigger.cs" />
     <Compile Include="Assets\ReviewUi.cs" />
     <Compile Include="Assets\WaiterControl.cs" />
     <Compile Include="Assets\burgerSpawn.cs" />
     <Compile Include="Assets\reviewBurgerSpawn.cs" />
+    <Compile Include="Assets\scrollingtext.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

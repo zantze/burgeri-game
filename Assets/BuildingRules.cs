@@ -13,19 +13,8 @@ public class BuildingRules : MonoBehaviour {
 
     // Placeholder recipe
     // We shall generate the recipes in the future
-    List<Ingredient> recipe = new List<Ingredient> {
-      new Ingredient("Bun bottom"),
-      new Ingredient("Bun top"),
-      new Ingredient("Steak"),
-      new Ingredient("Steak"),
-      new Ingredient("Salad"),
-      new Ingredient("Salad"),
-      new Ingredient("Pickle"),
-      new Ingredient("Pickle"),
-      new Ingredient("Pickle")
-    };
     // TODO: get the recipe from external resource
-    LoadRecipe(recipe);
+    LoadRecipe(Helpers.currentRecipe);
 	}
 	
 	// Update is called once per frame

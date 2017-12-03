@@ -48,6 +48,7 @@ public class ReviewTrigger : MonoBehaviour {
   void ReviewBurger() {
 
     if (burger == null) {
+      Destroy(GameObject.Find("CreatedBurger"));
       score -= 10000;
       AddNote("Where is my burger? I want my money back.");
       SetRank(rankFMinus);
@@ -75,13 +76,13 @@ public class ReviewTrigger : MonoBehaviour {
       // If the player inserted extra stuff
       if (extraParts > 0) {
         AddNote("I didn't ask for these?");
-        score -= extraParts * 10;
+        score -= extraParts * 14;
       }
 
       // if the played didnt put everything
       if (missingParts > 0) {
         AddNote("Seems like something is missing from here.");
-        score -= missingParts * 10;
+        score -= missingParts * 18;
       }
 
       // If the parts were correct
@@ -136,12 +137,12 @@ public class ReviewTrigger : MonoBehaviour {
     }
 
     else if (time < 60) {
-      score -= 15;
+      score -= 30;
       AddNote("The burger is still warm.");
     }
 
     else if (time < 90) {
-      score -= 30;
+      score -= 50;
       AddNote("The service could be a bit quicker.");
     }
 
@@ -152,16 +153,16 @@ public class ReviewTrigger : MonoBehaviour {
   }
 
   void CheckFilthiness() {
-    if (dirtiness < 10) {
+    if (dirtiness < 5) {
 
     }
 
-    else if (dirtiness < 20) {
+    else if (dirtiness < 10) {
       score -= 30;
       AddNote("The burger looks fine, but tastes a bit like the floor.");
     }
 
-    else if (dirtiness < 30) {
+    else if (dirtiness < 20) {
       score -= 75;
       AddNote("The burger looks rather dirty, like it has been used to mop the floors.");
     }
@@ -224,10 +225,12 @@ public class ReviewTrigger : MonoBehaviour {
 
     if (collision.gameObject.GetComponent<BurgerOrder>()) {
       burger = collision.gameObject;
+      dirtiness = collision.gameObject.GetComponent<BurgerOrder>().dirtiness;
     }
 
     else if (collision.transform.parent.GetComponent<BurgerOrder>()) {
       burger = collision.transform.parent.gameObject;
+      dirtiness = collision.transform.parent.gameObject.GetComponent<BurgerOrder>().dirtiness;
     }
   }
 
