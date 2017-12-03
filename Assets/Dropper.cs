@@ -13,6 +13,7 @@ public class Dropper : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+    uiSelector.texture = ingredients[index].GetComponent<BurgerIngredient>().GetIngredient().icon;
 
   }
 	

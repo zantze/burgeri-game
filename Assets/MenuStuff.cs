@@ -6,7 +6,7 @@ public class MenuStuff : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+    Destroy(GameObject.Find("CreatedBurger"));
 	}
 	
 	// Update is called once per frame
