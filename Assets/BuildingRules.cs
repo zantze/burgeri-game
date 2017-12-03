@@ -19,6 +19,7 @@ public class BuildingRules : MonoBehaviour {
       new Ingredient("Steak"),
       new Ingredient("Steak"),
       new Ingredient("Salad"),
+      new Ingredient("Salad"),
       new Ingredient("Pickle"),
       new Ingredient("Pickle"),
       new Ingredient("Pickle")

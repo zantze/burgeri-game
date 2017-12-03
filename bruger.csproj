@@ -91,10 +91,13 @@
     <Compile Include="Assets\Helpers.cs" />
     <Compile Include="Assets\IgnoreCollisions.cs" />
     <Compile Include="Assets\Ingredient.cs" />
+    <Compile Include="Assets\Rank.cs" />
     <Compile Include="Assets\RecipeHolder.cs" />
     <Compile Include="Assets\ReviewTrigger.cs" />
+    <Compile Include="Assets\ReviewUi.cs" />
     <Compile Include="Assets\WaiterControl.cs" />
     <Compile Include="Assets\burgerSpawn.cs" />
+    <Compile Include="Assets\reviewBurgerSpawn.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

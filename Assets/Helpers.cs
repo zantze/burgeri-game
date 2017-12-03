@@ -4,6 +4,9 @@ using UnityEngine;
 
 static public class Helpers  {
 
+  public static List<string> notes = new List<string>();
+  public static Rank rank = new Rank();
+
   static public GameObject PlayRandomSound(AudioClip[] sounds, float volume = 0.3f) {
 
     GameObject sound = new GameObject();

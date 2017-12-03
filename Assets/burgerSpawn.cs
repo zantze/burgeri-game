@@ -13,19 +13,39 @@ public class burgerSpawn : MonoBehaviour {
 
   public Collider2D[] colliderIgnores;
 
-  void Awake() {
+  void Start() {
     // Find the burger from the previous scene
     burger = GameObject.Find("CreatedBurger");
 
+    GameObject newBurger = new GameObject("CreatedBurger");
+    DontDestroyOnLoad(newBurger);
+    newBurger.transform.position = burger.GetComponent<Rigidbody2D>().worldCenterOfMass;
+
+    newBurger.AddComponent<Rigidbody2D>();
+    var koigfdsg = newBurger.AddComponent<RecipeHolder>();
+    koigfdsg.recipe = burger.GetComponent<RecipeHolder>().recipe;
+
+    List<Transform> children = new List<Transform>();
+
+    foreach (Transform child in burger.transform) {
+      children.Add(child.transform);
+    }
+
+    foreach (Transform child in children) {
+      child.SetParent(newBurger.transform);
+    }
+
+    Destroy(burger);
+
     // Scale down the burger
-    burger.transform.localScale = new Vector3(0.55f, 0.55f, 0.55f);
+    newBurger.transform.localScale = new Vector3(0.55f, 0.55f, 0.55f);
 
     // Get list with player's collider so we can ignore collision between player and burger part
     var lista = new List<Collider2D>() {
         player.GetComponent<Collider2D>()
       };
 
-    foreach (Transform child in burger.transform) {
+    foreach (Transform child in newBurger.transform) {
 
       // Remove sound and add material to burger part
       child.GetComponent<BurgerIngredient>().PlaySounds = false;
@@ -42,27 +62,23 @@ public class burgerSpawn : MonoBehaviour {
     }
 
     // Change burger gravity
-    burger.GetComponent<Rigidbody2D>().gravityScale = 0.4f;
+    newBurger.GetComponent<Rigidbody2D>().gravityScale = 0.4f;
+
 
     // Lets create a component for the burger, that carries the data over to 'review' scene
-    BurgerOrder bo = burger.AddComponent<BurgerOrder>();
+    BurgerOrder bo = newBurger.AddComponent<BurgerOrder>();
     // We need to get some ignores so we can exclude plate and the initial table from dirtiness meter
     bo.plates = colliderIgnores;
 
     bo.burger = ingredients;
 
     // Not sure what these are
-    IgnoreCollisions ic = burger.AddComponent<IgnoreCollisions>();
+    IgnoreCollisions ic = newBurger.AddComponent<IgnoreCollisions>();
     ic.colliders.Add(player.GetComponent<Collider2D>());
 
     // Move the burger to the spawn location
-    burger.transform.position = transform.position;
+    newBurger.transform.position = this.transform.position;
   }
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {
