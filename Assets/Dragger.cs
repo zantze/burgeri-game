@@ -9,6 +9,8 @@
 public class Dragger : MonoBehaviour {
   public LayerMask m_DragLayers;
 
+  public GameObject plate;
+  bool lockPlate = false;
   [Range(0.0f, 100.0f)]
   public float m_Damping = 1.0f;
 
@@ -20,7 +22,8 @@ public class Dragger : MonoBehaviour {
 
   private TargetJoint2D m_TargetJoint;
 
-  void Update() {
+  void Update() { 
+
     // Calculate the world position for the mouse.
     var worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -43,10 +46,17 @@ public class Dragger : MonoBehaviour {
 
       // Attach the anchor to the local-point where we clicked.
       m_TargetJoint.anchor = m_TargetJoint.transform.InverseTransformPoint(worldPos);
+
+      if (body.gameObject == plate) {
+        lockPlate = true;
+      }
     }
     else if (Input.GetMouseButtonUp(0)) {
       Destroy(m_TargetJoint);
       m_TargetJoint = null;
+
+      lockPlate = false;
+
       return;
     }
 
@@ -57,6 +67,15 @@ public class Dragger : MonoBehaviour {
       // Draw the line between the target and the joint anchor.
       if (m_DrawDragLine)
         Debug.DrawLine(m_TargetJoint.transform.TransformPoint(m_TargetJoint.anchor), worldPos, m_Color);
+    }
+
+    if (lockPlate) {
+      plate.GetComponent<Collider2D>().transform.eulerAngles = new Vector3(plate.GetComponent<Collider2D>().transform.eulerAngles.x, plate.GetComponent<Collider2D>().transform.eulerAngles.y, 0);
+      plate.GetComponent<Rigidbody2D>().freezeRotation = true;
+    }
+
+    else {
+      plate.GetComponent<Rigidbody2D>().freezeRotation = false;
     }
   }
 }

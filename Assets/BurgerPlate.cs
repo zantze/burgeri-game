@@ -37,12 +37,9 @@ public class BurgerPlate : MonoBehaviour {
       }
 
       completeBurger.AddComponent<Rigidbody2D>();
-      completeBurger.transform.localScale = new Vector3(0.19f, 0.19f, 0.19f);
 
       DontDestroyOnLoad(completeBurger);
-      foreach (Transform child in completeBurger.transform) {
-        child.GetComponent<SpriteRenderer>().material = spriteMaterial;
-      }
+
 
       Application.LoadLevel("SideScroller");
 

@@ -9,8 +9,11 @@ public class DiscoMusicTrgiiger : MonoBehaviour {
   public AudioSource music;
   AudioLowPassFilter lowp;
 
-	// Use this for initialization
-	void Start () {
+  public float smoothTime = 0.3F;
+  private float yVelocity = 0.0F;
+
+  // Use this for initialization
+  void Start () {
     lowp = music.GetComponent<AudioLowPassFilter>();
     music.volume = 0.15f;
   }
@@ -20,16 +23,16 @@ public class DiscoMusicTrgiiger : MonoBehaviour {
 		
 	}
 
-  void OnTriggerEnter2D(Collider2D other) {
+  void OnTriggerStay2D(Collider2D other) {
     if (other == player) {
-      lowp.cutoffFrequency = 22000;
+      lowp.cutoffFrequency = Mathf.SmoothDamp(lowp.cutoffFrequency, 22000f, ref yVelocity, smoothTime);
       music.volume = 0.28f;
     }
   }
 
   void OnTriggerExit2D(Collider2D other) {
     if (other == player) {
-      lowp.cutoffFrequency = 447;
+      lowp.cutoffFrequency = 447f;
       music.volume = 0.15f;
     }
   }
