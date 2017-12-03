@@ -6,6 +6,8 @@ public class BurgerPlate : MonoBehaviour {
 
   public Material spriteMaterial;
 
+  public BuildingRules rules;
+
   bool createOnce = true;
   bool finishBurger = false;
 
@@ -37,7 +39,8 @@ public class BurgerPlate : MonoBehaviour {
       }
 
       completeBurger.AddComponent<Rigidbody2D>();
-
+      var koigfdsg = completeBurger.AddComponent<RecipeHolder>();
+      koigfdsg.recipe = rules.currentRecipe;
       DontDestroyOnLoad(completeBurger);
 
 

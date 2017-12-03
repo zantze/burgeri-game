@@ -49,6 +49,8 @@ public class burgerSpawn : MonoBehaviour {
     // We need to get some ignores so we can exclude plate and the initial table from dirtiness meter
     bo.plates = colliderIgnores;
 
+    bo.burger = ingredients;
+
     // Not sure what these are
     IgnoreCollisions ic = burger.AddComponent<IgnoreCollisions>();
     ic.colliders.Add(player.GetComponent<Collider2D>());

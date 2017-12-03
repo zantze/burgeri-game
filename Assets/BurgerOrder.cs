@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BurgerOrder : MonoBehaviour {
 
+  public List<Ingredient> burger = new List<Ingredient>();
+  public List<Ingredient> recipe = new List<Ingredient>();
+
   public float dirtiness;
   public Collider2D[] plates;
 

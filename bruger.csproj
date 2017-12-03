@@ -91,6 +91,7 @@
     <Compile Include="Assets\Helpers.cs" />
     <Compile Include="Assets\IgnoreCollisions.cs" />
     <Compile Include="Assets\Ingredient.cs" />
+    <Compile Include="Assets\RecipeHolder.cs" />
     <Compile Include="Assets\ReviewTrigger.cs" />
     <Compile Include="Assets\WaiterControl.cs" />
     <Compile Include="Assets\burgerSpawn.cs" />
