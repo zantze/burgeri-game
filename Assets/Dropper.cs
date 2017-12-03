@@ -24,6 +24,7 @@ public class Dropper : MonoBehaviour {
       v3 = Camera.main.ScreenToWorldPoint(v3);
 
       Instantiate(ingredients[index], v3, Quaternion.identity);
+      Helpers.PlaySound(ingredients[index].GetComponent<BurgerIngredient>().GetIngredient().spawnSound);
     }
 
     if (Input.GetKeyDown(KeyCode.A) && index > 0) {

@@ -87,6 +87,7 @@
     <Compile Include="Assets\Dragger.cs" />
     <Compile Include="Assets\Dropper.cs" />
     <Compile Include="Assets\Hand.cs" />
+    <Compile Include="Assets\Helpers.cs" />
     <Compile Include="Assets\IgnoreCollisions.cs" />
     <Compile Include="Assets\Ingredient.cs" />
     <Compile Include="Assets\WaiterControl.cs" />
