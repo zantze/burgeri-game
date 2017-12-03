@@ -13,15 +13,16 @@ public class BuildingRules : MonoBehaviour {
 
     // Placeholder recipe
     // We shall generate the recipes in the future
-    List<Ingredient> recipe = new List<Ingredient>();
-    recipe.Add(new Ingredient("Bun bottom"));
-    recipe.Add(new Ingredient("Bun top"));
-    recipe.Add(new Ingredient("Steak"));
-    recipe.Add(new Ingredient("Steak"));
-    recipe.Add(new Ingredient("Salad"));
-    recipe.Add(new Ingredient("Pickle"));
-    recipe.Add(new Ingredient("Pickle"));
-    recipe.Add(new Ingredient("Pickle"));
+    List<Ingredient> recipe = new List<Ingredient> {
+      new Ingredient("Bun bottom"),
+      new Ingredient("Bun top"),
+      new Ingredient("Steak"),
+      new Ingredient("Steak"),
+      new Ingredient("Salad"),
+      new Ingredient("Pickle"),
+      new Ingredient("Pickle"),
+      new Ingredient("Pickle")
+    };
     // TODO: get the recipe from external resource
     LoadRecipe(recipe);
 	}

@@ -10,6 +10,7 @@ public class Hand : MonoBehaviour {
   Vector3 origin;
   Vector3 target;
   public float armLength;
+  public float armMinLength;
   public float smoothTime; 
 
   private Vector3 velocity = Vector3.zero;
@@ -34,6 +35,6 @@ public class Hand : MonoBehaviour {
 
     // Debug.DrawLine(origin, origin + direction * 10, Color.red, Mathf.Infinity);
 
-    rb.MovePosition(Vector3.SmoothDamp(transform.position, origin + direction * Mathf.Clamp(Vector3.Distance(origin, target), 0f, armLength), ref velocity, smoothTime));
+    rb.MovePosition(Vector3.SmoothDamp(transform.position, origin + direction * Mathf.Clamp(Vector3.Distance(origin, target), armMinLength, armLength), ref velocity, smoothTime));
   }
 }
