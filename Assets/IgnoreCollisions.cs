@@ -6,8 +6,16 @@ public class IgnoreCollisions : MonoBehaviour {
 
   public List<Collider2D> colliders = new List<Collider2D>();
 
-	// Use this for initialization
-	void Start () {
+  public IgnoreCollisions() {
+
+  }
+
+  public IgnoreCollisions(List<Collider2D> _colliders) {
+    colliders = _colliders;
+  }
+
+  // Use this for initialization
+  void Start () {
     foreach (Collider2D asdfasdf in colliders) {
       Physics2D.IgnoreCollision(GetComponent<Collider2D>(), asdfasdf);
     }
@@ -17,4 +25,10 @@ public class IgnoreCollisions : MonoBehaviour {
 	void Update () {
 		
 	}
+
+  public void RemoveCollisions(List<Collider2D> colliders) {
+    foreach (Collider2D asdfasdf in colliders) {
+      Physics2D.IgnoreCollision(GetComponent<Collider2D>(), asdfasdf);
+    }
+  }
 }

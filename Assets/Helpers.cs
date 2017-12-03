@@ -4,7 +4,7 @@ using UnityEngine;
 
 static public class Helpers  {
 
-  static public GameObject PlayRandomSound(AudioClip[] sounds, float volume = 0.4f) {
+  static public GameObject PlayRandomSound(AudioClip[] sounds, float volume = 0.3f) {
 
     GameObject sound = new GameObject();
     AudioSource aSource = sound.AddComponent<AudioSource>();

@@ -14,7 +14,16 @@ public class burgerSpawn : MonoBehaviour {
     burger.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
 
     foreach (Transform child in burger.transform) {
+      child.GetComponent<BurgerIngredient>().PlaySounds = false;
       child.GetComponent<SpriteRenderer>().material = spriteMaterial;
+
+      var lista = new List<Collider2D>() {
+        player.GetComponent<Collider2D>()
+      };
+
+      IgnoreCollisions script = child.gameObject.AddComponent<IgnoreCollisions>();
+
+      script.RemoveCollisions(lista);
     }
 
     burger.GetComponent<Rigidbody2D>().gravityScale = 0.4f;
